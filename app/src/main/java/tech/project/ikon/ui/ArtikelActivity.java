@@ -1,7 +1,11 @@
 package tech.project.ikon.ui;
 
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -24,7 +28,7 @@ import tech.project.ikon.ui.Adapter.ArtikelViewAdapter;
 import tech.project.ikon.viewmodel.ArtikelViewModel;
 
 @AndroidEntryPoint
-public class ArtikelActivity extends AppCompatActivity {
+public class ArtikelActivity extends AppCompatActivity implements ArtikelViewAdapter.ButtonSelected{
 
     @Inject
     ArtikelViewModel viewModel;
@@ -60,6 +64,7 @@ public class ArtikelActivity extends AppCompatActivity {
 
     private void initView() {
         loadingDialog = new LoadingDialog(this);
+        ArtikelViewAdapter.setButtonSelected(this);
 
         loadingDialog.show();
 
@@ -75,6 +80,13 @@ public class ArtikelActivity extends AppCompatActivity {
 
     private void setDataNp(ArrayList<Artikel> artikel) {
         ArtikelViewAdapter.insertData(artikel);
+
+        final InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+        binding.btnSearch.setOnClickListener(view -> {
+            ArtikelViewAdapter.updateDataList(artikel, binding.etTitle.getQuery().toString());
+
+            imm.hideSoftInputFromWindow(binding.etTitle.getWindowToken(), 0);
+        });
     }
 
 
@@ -114,5 +126,17 @@ public class ArtikelActivity extends AppCompatActivity {
         if (EventBus.getDefault().isRegistered(this)) {
             EventBus.getDefault().unregister(this);
         }
+    }
+
+    @Override
+    public void onItemButtonSelected(Artikel artikel) {
+
+        Intent intent=new Intent();
+        intent.putExtra("userId", artikel.getUserId());
+        intent.putExtra("id", artikel.getId());
+        intent.putExtra("title", artikel.getTitle());
+        intent.putExtra("body", artikel.getBody());
+        setResult(Activity.RESULT_OK,intent);
+        finish();
     }
 }

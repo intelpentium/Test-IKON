@@ -12,13 +12,48 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp" />
 
+    <LinearLayout
+        android:id="@+id/lineSearch"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/whiteColor"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:layout_margin="@dimen/_10sdp"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar">
+
+        <SearchView
+            android:id="@+id/etTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/bg_grey_bordered"
+            android:iconifiedByDefault="false"
+            android:queryBackground="@android:color/transparent"
+            android:queryHint="Title" />
+
+        <Button
+            android:id="@+id/btnSearch"
+            android:layout_width="wrap_content"
+            android:layout_height="45dp"
+            android:layout_marginStart="10dp"
+            android:background="@drawable/bg_cta_orange"
+            android:text="Search"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="16sp" />
+    </LinearLayout>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rcvData"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:layout_marginTop="@dimen/_10sdp"
         android:layout_marginStart="5dp"
         android:layout_marginEnd="5dp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar"
+        app:layout_constraintTop_toBottomOf="@+id/lineSearch"
         tools:listitem="@layout/item_artikel" />
 </androidx.constraintlayout.widget.ConstraintLayout>

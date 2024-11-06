@@ -30,8 +30,6 @@ public class ArtikelService {
                     Artikel artikel = response.body();
                     Result.Success<Artikel> result = new Result.Success<>(artikel);
                     EventBus.getDefault().post(result);
-
-                    Log.e("BISMILLAH", ""+artikel);
                 } else {
                     EventBus.getDefault().post(new Result.Error(new Exception("Ambil data error")));
                 }
