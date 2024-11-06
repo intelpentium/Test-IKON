@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    card_view:cardCornerRadius="10dp"
+    card_view:cardElevation="5dp"
+    card_view:cardUseCompatPadding="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="15dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="15dp">
+
+            <TextView
+                android:id="@+id/tvProductName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="PMD"
+                android:textSize="18sp"
+                app:layout_constraintTop_toTopOf="parent"
+                card_view:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/productName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                card_view:layout_constraintEnd_toEndOf="parent"
+                card_view:layout_constraintTop_toTopOf="parent"
+                tools:text="PMD2 Siklus 4 - 18 bln" />
+
+            <TextView
+                android:id="@+id/tvNamaSentra"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="Nama Sentra"
+                android:textSize="16sp"
+                card_view:layout_constraintStart_toStartOf="@+id/tvProductName"
+                card_view:layout_constraintTop_toBottomOf="@+id/tvProductName" />
+
+            <TextView
+                android:id="@+id/sentraName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                card_view:layout_constraintEnd_toEndOf="@+id/productName"
+                card_view:layout_constraintTop_toTopOf="@+id/tvNamaSentra"
+                tools:text="Nama Sentra" />
+
+            <TextView
+                android:id="@+id/tvTanggalMaturity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="Tanggal Maturity"
+                android:textSize="16sp"
+                card_view:layout_constraintStart_toStartOf="@+id/tvNamaSentra"
+                card_view:layout_constraintTop_toBottomOf="@+id/tvNamaSentra" />
+
+            <TextView
+                android:id="@+id/maturityDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:textSize="16sp"
+                card_view:layout_constraintEnd_toEndOf="@+id/sentraName"
+                card_view:layout_constraintTop_toBottomOf="@+id/sentraName"
+                tools:text="Tanggal Maturity" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
+</androidx.cardview.widget.CardView>
